@@ -654,10 +654,9 @@ async def get_achievements(db: Session = Depends(get_db)):
             "unlocked": unlocked,
             "locked": locked,
             "statistics": {
-                "total": len(all_achievements),
                 "total_achievements": len(all_achievements),
                 "unlocked_count": len(unlocked),
-                "completion_rate": round(len(unlocked) / len(all_achievements), 3) if len(all_achievements) > 0 else 0
+                "completion_rate": round(len(unlocked) / len(all_achievements) * 100, 1)
             }
         }
         
