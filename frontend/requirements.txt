@@ -1,0 +1,36 @@
+# PyQt6 GUI框架
+PyQt6==6.6.1
+PyQt6-WebEngine==6.6.0
+
+# HTTP客户端
+requests==2.31.0
+httpx==0.25.2
+
+# 数据处理
+pandas==2.1.4
+numpy==1.24.4
+
+# 图表和可视化
+matplotlib==3.8.2
+seaborn==0.13.0
+
+# 语音处理
+pyaudio==0.2.11
+SpeechRecognition==3.10.0
+
+# 文件处理
+PyPDF2==3.0.1
+python-docx==1.1.0
+
+# 代码编辑器
+QScintilla==2.14.1
+
+# 工具库
+python-dotenv==1.0.0
+loguru==0.7.2
+pillow==10.1.0
+
+# 开发工具
+pytest==7.4.3
+black==23.11.0
+isort==5.12.0

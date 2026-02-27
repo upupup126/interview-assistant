@@ -1,0 +1,85 @@
+# 云端部署配置文件
+# 适用于腾讯云轻量应用服务器等云平台
+
+apiVersion: v1
+kind: Config
+metadata:
+  name: interview-assistant-cloud-deploy
+  description: 面试助手云端部署配置
+
+# 应用配置
+app:
+  name: interview-assistant
+  version: "1.0.0"
+  description: "程序员面试助手"
+  
+# 服务配置
+service:
+  type: web
+  port: 8000
+  health_check: "/health"
+  
+# 环境变量
+environment:
+  HOST: "0.0.0.0"
+  PORT: "8000"
+  DEBUG: "false"
+  DATABASE_URL: "sqlite:///./data/interview_assistant.db"
+  
+# 资源配置
+resources:
+  cpu: "1"
+  memory: "1Gi"
+  disk: "10Gi"
+  
+# 网络配置
+network:
+  ports:
+    - port: 8000
+      protocol: TCP
+      name: api
+    - port: 80
+      protocol: TCP
+      name: http
+      
+# 存储配置
+storage:
+  - name: data
+    path: /app/data
+    size: 5Gi
+  - name: logs
+    path: /app/logs
+    size: 2Gi
+    
+# 部署策略
+deployment:
+  strategy: rolling
+  replicas: 1
+  
+# 监控配置
+monitoring:
+  enabled: true
+  metrics_path: "/metrics"
+  
+# 日志配置
+logging:
+  level: info
+  format: json
+  
+# 安全配置
+security:
+  run_as_non_root: true
+  read_only_root_filesystem: false
+  
+# 启动命令
+command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+
+# 健康检查
+health_check:
+  http_get:
+    path: /health
+    port: 8000
+  initial_delay_seconds: 30
+  period_seconds: 10
+  timeout_seconds: 5
+  failure_threshold: 3

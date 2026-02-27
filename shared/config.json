@@ -1,0 +1,30 @@
+{
+  "app": {
+    "name": "程序员面试助手",
+    "version": "1.0.0",
+    "author": "Interview Assistant Team"
+  },
+  "api": {
+    "base_url": "http://localhost:8000",
+    "timeout": 30,
+    "retry_count": 3
+  },
+  "ui": {
+    "theme": "dark",
+    "language": "zh-CN",
+    "font_family": "思源黑体",
+    "font_size": 10
+  },
+  "features": {
+    "auto_save": true,
+    "auto_backup": true,
+    "voice_enabled": true,
+    "ai_enabled": true
+  },
+  "paths": {
+    "data_dir": "./data",
+    "backup_dir": "./backups",
+    "temp_dir": "./temp",
+    "logs_dir": "./logs"
+  }
+}
