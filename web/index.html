@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>面试助手 - 程序员面试准备平台</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+    <div class="app">
+        <!-- 侧边栏 -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="ri-code-s-slash-line"></i>
+                    <span>面试助手</span>
+                </div>
+                <small class="version">v1.0.0</small>
+            </div>
+            <ul class="nav-list">
+                <li class="nav-item active" data-page="dashboard">
+                    <i class="ri-dashboard-3-line"></i><span>仪表盘</span>
+                </li>
+                <li class="nav-item" data-page="leetcode">
+                    <i class="ri-code-box-line"></i><span>LeetCode 刷题</span>
+                </li>
+                <li class="nav-item" data-page="interview">
+                    <i class="ri-question-answer-line"></i><span>面试练习</span>
+                </li>
+                <li class="nav-item" data-page="resume">
+                    <i class="ri-file-user-line"></i><span>简历管理</span>
+                </li>
+                <li class="nav-item" data-page="analytics">
+                    <i class="ri-bar-chart-box-line"></i><span>数据统计</span>
+                </li>
+            </ul>
+            <div class="sidebar-footer">
+                <div class="status-indicator" id="backendStatus">
+                    <span class="dot"></span>
+                    <span class="text">检测中...</span>
+                </div>
+            </div>
+        </nav>
+
+        <!-- 主内容区 -->
+        <main class="main-content">
+            <!-- 仪表盘 -->
+            <section class="page active" id="page-dashboard">
+                <div class="page-header">
+                    <h1>仪表盘</h1>
+                    <p class="subtitle">欢迎回来，今天也要加油哦！</p>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+                            <i class="ri-code-box-line"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="stat-total">-</span>
+                            <span class="stat-label">总题目数</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #f093fb, #f5576c);">
+                            <i class="ri-check-double-line"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="stat-completed">-</span>
+                            <span class="stat-label">已完成</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #4facfe, #00f2fe);">
+                            <i class="ri-question-answer-line"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="stat-interview">-</span>
+                            <span class="stat-label">面试题库</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #43e97b, #38f9d7);">
+                            <i class="ri-time-line"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="stat-progress">-</span>
+                            <span class="stat-label">进行中</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3><i class="ri-history-line"></i> 最近活动</h3>
+                        </div>
+                        <div class="card-body" id="recent-activity">
+                            <div class="loading-placeholder">加载中...</div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3><i class="ri-lightbulb-line"></i> 今日推荐</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="tip-item">
+                                <span class="tip-badge easy">简单</span>
+                                <span>每天至少完成一道简单题保持手感</span>
+                            </div>
+                            <div class="tip-item">
+                                <span class="tip-badge medium">中等</span>
+                                <span>尝试用多种解法解决同一问题</span>
+                            </div>
+                            <div class="tip-item">
+                                <span class="tip-badge hard">困难</span>
+                                <span>周末挑战一道困难题突破自我</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- LeetCode 刷题页面 -->
+            <section class="page" id="page-leetcode">
+                <div class="page-header">
+                    <h1>LeetCode 刷题</h1>
+                    <p class="subtitle">系统化刷题，稳步提升算法能力</p>
+                </div>
+                <div class="toolbar">
+                    <div class="filter-group">
+                        <button class="filter-btn active" data-difficulty="all">全部</button>
+                        <button class="filter-btn" data-difficulty="简单">简单</button>
+                        <button class="filter-btn" data-difficulty="中等">中等</button>
+                        <button class="filter-btn" data-difficulty="困难">困难</button>
+                    </div>
+                    <div class="search-box">
+                        <i class="ri-search-line"></i>
+                        <input type="text" id="leetcode-search" placeholder="搜索题目...">
+                    </div>
+                </div>
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>编号</th>
+                                <th>题目</th>
+                                <th>难度</th>
+                                <th>标签</th>
+                                <th>状态</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="leetcode-table-body">
+                            <tr><td colspan="6" class="loading-placeholder">加载中...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- 面试练习页面 -->
+            <section class="page" id="page-interview">
+                <div class="page-header">
+                    <h1>面试练习</h1>
+                    <p class="subtitle">模拟真实面试场景，提升面试表现</p>
+                </div>
+                <div class="toolbar">
+                    <div class="filter-group">
+                        <button class="filter-btn active" data-category="all">全部</button>
+                        <button class="filter-btn" data-category="Python">Python</button>
+                        <button class="filter-btn" data-category="Web开发">Web开发</button>
+                        <button class="filter-btn" data-category="数据库">数据库</button>
+                    </div>
+                </div>
+                <div class="interview-grid" id="interview-list">
+                    <div class="loading-placeholder">加载中...</div>
+                </div>
+            </section>
+
+            <!-- 简历管理页面 -->
+            <section class="page" id="page-resume">
+                <div class="page-header">
+                    <h1>简历管理</h1>
+                    <p class="subtitle">AI辅助优化简历，提高面试通过率</p>
+                </div>
+                <div class="resume-container">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3><i class="ri-file-list-3-line"></i> 简历模板</h3>
+                        </div>
+                        <div class="card-body" id="resume-templates">
+                            <div class="loading-placeholder">加载中...</div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3><i class="ri-robot-line"></i> AI 简历分析</h3>
+                        </div>
+                        <div class="card-body">
+                            <textarea id="resume-text" class="resume-input" placeholder="请在此粘贴您的简历文本，AI将为您提供优化建议..."></textarea>
+                            <button class="btn btn-primary" id="analyze-resume-btn">
+                                <i class="ri-sparkling-line"></i> 开始分析
+                            </button>
+                            <div id="resume-analysis-result" class="analysis-result" style="display:none;"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 数据统计页面 -->
+            <section class="page" id="page-analytics">
+                <div class="page-header">
+                    <h1>数据统计</h1>
+                    <p class="subtitle">可视化学习进度，数据驱动成长</p>
+                </div>
+                <div class="analytics-grid">
+                    <div class="card chart-card">
+                        <div class="card-header">
+                            <h3><i class="ri-pie-chart-line"></i> 题目难度分布</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart-container" id="difficulty-chart"></div>
+                        </div>
+                    </div>
+                    <div class="card chart-card">
+                        <div class="card-header">
+                            <h3><i class="ri-bar-chart-grouped-line"></i> 完成进度</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="progress-bars" id="progress-bars"></div>
+                        </div>
+                    </div>
+                    <div class="card chart-card wide">
+                        <div class="card-header">
+                            <h3><i class="ri-line-chart-line"></i> 学习趋势</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="trend-info" id="trend-info">
+                                <p>持续刷题，保持学习节奏，你的努力终将有所回报！</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Toast通知 -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
